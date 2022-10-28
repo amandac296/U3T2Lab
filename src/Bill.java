@@ -29,17 +29,21 @@ public class Bill {
    */
     public boolean addTip() {
         double tipPercentage = 0.0;
-        if (customers >= 8){
-            tipPercentage = 0.3;
-        } else if (customers >=4){
-            tipPercentage = 0.27;
-        } else if (customers >= 2){
-            tipPercentage = 0.25;
-        } else if (customers == 1){
-            tipPercentage = 0.2;
+        if (tipAdded) {
+            return false;
+        } else {
+            if (customers >= 8){
+                tipPercentage = 0.3;
+            } else if (customers >=4){
+                tipPercentage = 0.27;
+            } else if (customers >= 2){
+                tipPercentage = 0.25;
+            } else {
+                tipPercentage = 0.2;
+            }
+            totalCost += (totalCost * tipPercentage);
+            return tipAdded = true;
         }
-       double tip = (totalCost*tipPercentage) + totalCost;
-        return tipAdded = true;
     }
 
     /* Returns String with info about the bill */
